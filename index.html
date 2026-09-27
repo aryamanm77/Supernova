@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Nova — Spoken English Tutor</title>
+  <meta name="description" content="Practice spoken English out loud with an AI conversation tutor." />
+  <meta name="theme-color" content="#1F1830" />
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="icon" href="/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="/icons/icon-192.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="app-header">
+      <span class="wordmark">Nova</span>
+      <div class="header-right">
+        <button id="streak-badge" class="streak-badge hidden" aria-label="View progress">
+          <span class="flame">🔥</span><span id="streak-count">0</span>
+        </button>
+        <button id="signin-button" class="signin-button">Sign in with Google</button>
+        <button id="avatar-button" class="avatar-button hidden" aria-label="Open profile">
+          <img id="avatar-img" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <!-- Signed-out gate -->
+    <div id="signin-gate" class="signin-gate">
+      <p class="gate-title">Sign in to start practicing</p>
+      <p class="gate-sub">Your streak, XP, and level are saved to your account.</p>
+      <button id="signin-button-main" class="signin-button large">Sign in with Google</button>
+    </div>
+
+    <!-- Scenario picker -->
+    <div id="scenario-picker" class="scenario-picker hidden">
+      <p class="picker-title">What do you want to practice today?</p>
+      <div class="scenario-grid">
+        <button class="scenario-card" data-scenario="free_chat">Free chat</button>
+        <button class="scenario-card" data-scenario="job_interview">Job interview</button>
+        <button class="scenario-card" data-scenario="ordering_food">Ordering food</button>
+        <button class="scenario-card" data-scenario="introducing_yourself">Introducing yourself</button>
+        <button class="scenario-card" data-scenario="travel_checkin">Airport / hotel check-in</button>
+      </div>
+    </div>
+
+    <!-- Conversation view -->
+    <main id="chat" class="chat hidden" aria-live="polite"></main>
+
+    <footer id="mic-bar" class="mic-bar hidden">
+      <p id="mic-label" class="mic-label">Tap to speak</p>
+      <button id="mic-button" class="mic-button" aria-label="Start speaking">
+        <span class="mic-ring"></span>
+        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="9" y="2" width="6" height="12" rx="3"/>
+          <path d="M5 11a7 7 0 0 0 14 0"/>
+          <line x1="12" y1="18" x2="12" y2="22"/>
+        </svg>
+      </button>
+      <button id="change-scenario" class="text-link hidden">Change topic</button>
+    </footer>
+
+    <!-- Profile panel -->
+    <div id="profile-panel" class="profile-panel hidden">
+      <div class="profile-card">
+        <img id="profile-avatar" class="profile-avatar" alt="" />
+        <p id="profile-name" class="profile-name"></p>
+        <div class="profile-stats">
+          <div class="stat"><span id="profile-streak" class="stat-value">0</span><span class="stat-label">day streak</span></div>
+          <div class="stat"><span id="profile-level" class="stat-value">1</span><span class="stat-label">level</span></div>
+          <div class="stat"><span id="profile-xp" class="stat-value">0</span><span class="stat-label">XP</span></div>
+        </div>
+        <p id="profile-conversations" class="profile-sub"></p>
+        <button id="close-profile" class="text-link">Close</button>
+        <button id="signout-button" class="signin-button ghost">Sign out</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
